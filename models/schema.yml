@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: orders
+    description: '{{ doc("table_orders") }}'
+    columns:
+      - name: order_id
+        description: "unique order id"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "customer id"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers')
+              field: customer_id
